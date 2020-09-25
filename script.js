@@ -1,6 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// Add event listener to generate buttongitgit 
 generateBtn.addEventListener("click", writePassword);
 
 // Write password to the #password input
@@ -117,5 +118,5 @@ function GenerateFinalPassword(Length, Lower, Upper, Special, Numbers)
   return passwd;
 }
 
-// Add event listener to generate button
+
 
