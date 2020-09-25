@@ -18,6 +18,7 @@ function generatePassword(){
   var UseUpper = "";
   var UseSpecial = "";
   var UseNumbers = "";
+  var FinalPassword = "";
 
   while ((PasswordLength < 8) || (PasswordLength > 128))
   {
@@ -30,29 +31,50 @@ function generatePassword(){
 
   while (UseLower !== 'y' && UseLower !== 'n')
   {
-    UseLower = prompt("Enter 'y', 'n' to include lowercase characters")
+    UseLower = prompt("Enter 'y' to include or 'n' or Cancel to exclude lowercase characters", "")
+    if (UseLower == null)
+    {
+      UseLower = "n";
+    }
     UseLower = UseLower.toLowerCase()
   }
 
   while (UseUpper !== 'y' && UseUpper !== 'n')
   {
-    UseUpper = prompt("Enter 'y', 'n' to include Uppercase characters")
+    UseUpper = prompt("Enter 'y' to include or 'n' or Cancel to exclude Uppercase characters", "")
+    if (UseUpper == null)
+    {
+      UseUpper = "n";
+    }
     UseUpper = UseUpper.toLowerCase()
   }
 
   while (UseSpecial !== 'y' && UseSpecial !== 'n')
   {
-    UseSpecial = prompt("Enter 'y', 'n' to include Special characters")
+    UseSpecial = prompt("Enter 'y' to include or 'n' or Cancel to exclude Special characters", "")
+    if (UseSpecial == null)
+    {
+      UseSpecial = "n";
+    }
     UseSpecial = UseSpecial.toLowerCase()
   }
 
   while (UseNumbers !== 'y' && UseNumbers !== 'n')
   {
-    UseNumbers = prompt("Enter 'y', 'n' to include integers")
+    UseNumbers = prompt("Enter 'y' to include or 'n' or Cancel to exclude integers", "")
+    if (UseNumbers == null)
+    {
+      UseNumbers = "n";
+    }
     UseNumbers = UseNumbers.toLowerCase()
   }
 
-  return GenerateFinalPassword(PasswordLength, UseLower, UseUpper, UseSpecial, UseNumbers);
+  if (PasswordLength != 0 && ((UseLower != "n") || (UseUpper != "n") || (UseSpecial != "n") || (UseNumbers != "n")))
+  {
+    FinalPassword = GenerateFinalPassword(PasswordLength, UseLower, UseUpper, UseSpecial, UseNumbers);
+  }
+
+  return FinalPassword;
 }
 
 function GenerateFinalPassword(Length, Lower, Upper, Special, Numbers)
